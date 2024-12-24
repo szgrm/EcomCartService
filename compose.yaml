@@ -1,0 +1,6 @@
+﻿services:
+  ecomcartservice:
+    image: ecomcartservice
+    build:
+      context: .
+      dockerfile: EcomCartService/Dockerfile
