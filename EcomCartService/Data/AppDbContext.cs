@@ -13,17 +13,14 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<Product>(entity =>
-        {
-            entity.ToTable("Products");
-        });
+        modelBuilder.Entity<Product>(entity => { entity.ToTable("Products"); });
 
         modelBuilder.Entity<CartItem>(entity =>
         {
             entity.ToTable("CartItems");
             entity.HasOne(c => c.Product)
-                  .WithMany()
-                  .HasForeignKey(c => c.ProductId);
+                .WithMany()
+                .HasForeignKey(c => c.ProductId);
         });
     }
-} 
+}

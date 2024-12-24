@@ -5,4 +5,4 @@ public class CartItem
     public int Quantity { get; set; }
     public string Username { get; set; }
     public Product Product { get; set; }
-} 
+}
