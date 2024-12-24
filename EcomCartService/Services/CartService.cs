@@ -42,11 +42,19 @@ public class CartService : ICartService
         return true;
     }
 
-    public async Task<List<CartItem>> GetCartSummaryAsync(string username)
+    public async Task<CartSummaryResponse> GetCartSummaryAsync(string username)
     {
-        return await _context.CartItems
+        var cartItems = await _context.CartItems
             .Include(c => c.Product)
             .Where(c => c.Username == username)
             .ToListAsync();
+
+        var totalAmount = cartItems.Sum(item => item.Quantity * item.Product.Price);
+
+        return new CartSummaryResponse
+        {
+            TotalAmount = totalAmount,
+            Items = cartItems
+        };
     }
 } 

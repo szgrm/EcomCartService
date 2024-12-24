@@ -28,7 +28,7 @@ public class CartController : ControllerBase
     }
 
     [HttpGet("summary/{username}")]
-    public async Task<ActionResult<List<CartItem>>> GetCartSummary(string username)
+    public async Task<ActionResult<CartSummaryResponse>> GetCartSummary(string username)
     {
         if (string.IsNullOrEmpty(username))
         {
