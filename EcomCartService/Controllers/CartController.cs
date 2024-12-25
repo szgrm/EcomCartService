@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/cart")]
 public class CartController : ControllerBase
 {
     private readonly ICartService _cartService;
