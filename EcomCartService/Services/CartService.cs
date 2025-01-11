@@ -66,4 +66,18 @@ public class CartService : ICartService
         await _context.SaveChangesAsync();
         return true;
     }
+
+    public async Task<bool> EmptyCartAsync(string username)
+    {
+        var cartItems = await _context.CartItems
+            .Where(c => c.Username == username)
+            .ToListAsync();
+
+        if (!cartItems.Any())
+            return false;
+
+        _context.CartItems.RemoveRange(cartItems);
+        await _context.SaveChangesAsync();
+        return true;
+    }
 }
