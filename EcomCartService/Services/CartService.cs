@@ -53,4 +53,17 @@ public class CartService : ICartService
             Items = cartItems
         };
     }
+
+    public async Task<bool> DeleteCartItemAsync(string username, int productId)
+    {
+        var cartItem = await _context.CartItems
+            .FirstOrDefaultAsync(c => c.ProductId == productId && c.Username == username);
+
+        if (cartItem == null)
+            return false;
+
+        _context.CartItems.Remove(cartItem);
+        await _context.SaveChangesAsync();
+        return true;
+    }
 }

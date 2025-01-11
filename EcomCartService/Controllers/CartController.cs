@@ -37,4 +37,16 @@ public class CartController : ControllerBase
 
         return await _cartService.GetCartSummaryAsync(username);
     }
+
+    [HttpDelete("{username}/{productId}")]
+    public async Task<ActionResult> DeleteCartItem(string username, int productId)
+    {
+        if (string.IsNullOrEmpty(username))
+        {
+            return BadRequest("Username is required");
+        }
+
+        var result = await _cartService.DeleteCartItemAsync(username, productId);
+        return result ? Ok() : NotFound();
+    }
 }
