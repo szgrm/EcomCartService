@@ -2,7 +2,7 @@
 
 This application hosted on Azure App Service. Check it out [here](https://ecomcartservice-gqhxgngjdkedghd3.germanywestcentral-01.azurewebsites.net/swagger/index.html).
 
-This is a simple shopping cart microservice built with .NET 8, Entity Framework Core, and PostgreSQL.
+This is a simple shopping cart microservice built with .NET 8, Entity Framework Core, and PostgreSQL, with a Next.js frontend.
 
 ## Features
 
@@ -17,32 +17,51 @@ This is a simple shopping cart microservice built with .NET 8, Entity Framework 
 - 🔐 User-specific carts
 - 🎯 RESTful API design
 - 📚 Swagger/OpenAPI documentation
+- 🌐 Next.js Frontend
+  - Modern, responsive UI
+  - Server-side rendering
+  - Interactive shopping experience
 
 ## Tech Stack
 
+### Backend
 - .NET 8
 - Entity Framework Core 9.0
 - PostgreSQL
 - Docker
 - Swagger/OpenAPI
 
+### Frontend
+- Next.js
+- React
+- TypeScript
+
 ## Prerequisites
 
 - .NET 8 SDK
+- Node.js (version 18 or higher)
+- npm or yarn
 - Docker (optional)
 - PostgreSQL instance or Docker container
 
 ## Getting Started
 
-### Local Development
+### Clone the Repository
 
-1. Clone the repository:
-
+1. Clone the repository with submodules:
+```bash
+git clone --recursive https://github.com/szgrm/EcomCartService.git
 ```
-git clone https://github.com/szgrm/EcomCartService.git
+
+If you've already cloned the repository without submodules:
+```bash
+git submodule init
+git submodule update
 ```
 
-2. Update the connection string in appsettings.json:
+### Backend Setup
+
+1. Update the connection string in appsettings.json:
 ```json
 {
   "ConnectionStrings": {
@@ -50,21 +69,43 @@ git clone https://github.com/szgrm/EcomCartService.git
   }
 }
 ```
-3. Run the migrations:
-```
+
+2. Run the migrations:
+```bash
 dotnet ef database update
 ```
-4. Start the application:
-```
+
+3. Start the backend application:
+```bash
 dotnet run
 ```
+
+### Frontend Setup
+
+1. Navigate to the frontend directory:
+```bash
+cd frontend
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+The frontend will be available at `http://localhost:3000`
+
 ### Docker Deployment
 
 1. Build and run using Docker Compose:
-```
+```bash
 docker-compose up --build
 ```
-This will start both the application and PostgreSQL database in containers.
+This will start both the backend application and PostgreSQL database in containers.
 
 ## API Endpoints
 
@@ -110,26 +151,50 @@ Username (string)
 
 ## Development
 
+### Backend
 The project uses Entity Framework Core for database operations. To create new migrations:
 
-```
+```bash
 dotnet ef migrations add MigrationName
 dotnet ef database update
+```
+
+### Frontend
+To build the frontend for production:
+```bash
+cd frontend
+npm run build
+npm start
 ```
 
 ## Contributing
 
 1. Fork the repository
 2. Create your feature branch:
-    
+    ```bash
     git checkout -b feature/AmazingFeature
+    ```
 
 3. Commit your changes:
-    
+    ```bash
     git commit -m 'Add some AmazingFeature'
+    ```
 
 4. Push to the branch:
-    
+    ```bash
     git push origin feature/AmazingFeature
+    ```
 
 5. Open a Pull Request
+
+### Updating the Frontend Submodule
+
+To update the frontend to the latest version:
+```bash
+cd frontend
+git pull origin main
+cd ..
+git add frontend
+git commit -m "Update frontend submodule"
+git push
+```
