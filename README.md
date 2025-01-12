@@ -59,35 +59,30 @@ git submodule init
 git submodule update
 ```
 
-### Backend Setup
+### How to run backend locally
 
-1. Update the connection string in appsettings.json:
-```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Host=localhost;Database=ecomcartdb;Username=postgres;Password=postgres"
-  }
-}
-```
-
-2. Run the migrations:
+1. Change directory to the backend:
 ```bash
-dotnet ef database update
+cd backend/
 ```
 
-3. Start the backend application:
+2. Start the backend application:
 ```bash
 dotnet run
 ```
 
-### Frontend Setup
+### How to run frontend locally
 
 1. Navigate to the frontend directory:
 ```bash
 cd frontend
 ```
+2. Change base URL in services/endpoints.ts
+```ts
+const localUrl = "http://localhost:5062" // change to your local backend url
+```
 
-2. Install dependencies:
+3. Install dependencies:
 ```bash
 npm install
 ```
@@ -98,14 +93,6 @@ npm run dev
 ```
 
 The frontend will be available at `http://localhost:3000`
-
-### Docker Deployment
-
-1. Build and run using Docker Compose:
-```bash
-docker-compose up --build
-```
-This will start both the backend application and PostgreSQL database in containers.
 
 ## API Endpoints
 
