@@ -2,6 +2,8 @@
 
 This application hosted on Azure App Service. Check it out [here](https://ecomcartservice-gqhxgngjdkedghd3.germanywestcentral-01.azurewebsites.net/swagger/index.html).
 
+You can visit the frontend [here](https://ecom-4ds1y9zgg-szgrms-projects.vercel.app/).
+
 This is a simple shopping cart microservice built with .NET 8, Entity Framework Core, and PostgreSQL, with a Next.js frontend.
 
 ## Features
@@ -85,7 +87,7 @@ npm install
 
 3. Start the development server:
 ```bash
-npm run dev
+npm run build && npm start
 ```
 
 The frontend will be available at `http://localhost:3000`
