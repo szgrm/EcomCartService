@@ -77,12 +77,8 @@ dotnet run
 ```bash
 cd frontend
 ```
-2. Change base URL in services/endpoints.ts
-```ts
-const localUrl = "http://localhost:5062" // change to your local backend url
-```
 
-3. Install dependencies:
+2. Install dependencies:
 ```bash
 npm install
 ```
